@@ -16,4 +16,11 @@ password = data['scenario1']['password']
 # test_det_attribute()
 # test_drop_down_list()
 # test_alerts()
-test_mouse_hovering()
+# test_mouse_hovering()
+
+logger = create_logger()
+logger.info("This is the info message")
+logger.debug("Debug message...")
+logger.error("I am an exceptional case.")
+logger.warning("something does not seem to be right")
+logger.critical("WOUW WOUW WOUW STOP IT NOW")

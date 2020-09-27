@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 
 import yaml
 from os.path import dirname, abspath
-
+import logging
 
 ROOT_DIR = dirname(dirname(abspath(__file__)))
 
@@ -194,7 +194,20 @@ def take_screenshot(message=""):
     driver.save_screenshot(full_file_path)
     # driver.get_screenshot_as_png(message + timestmp)
 
+def get_str_day():
+    return time.strftime("%Y%m%d")  # 20200927
 
+
+def get_str_seconds():
+    return time.strftime("%Y%m%d_%H%M%S", time.localtime())
+
+
+def create_logger(filename=""):
+    logging.basicConfig(filename=f"{ROOT_DIR}/logs/{filename}{get_str_day()}.log",
+                        level=logging.INFO,
+                        format="%(asctime)-15s [%(levelname)s] %(funcName)s: %(message)s",
+                        filemode='a')  # 'w' - to overwrite in each run, 'a' - append
+    return logging.getLogger()
 
 
 
